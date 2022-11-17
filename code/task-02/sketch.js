@@ -7,12 +7,13 @@ let rectB = 50;
 let a = 20;
 let b = 20;
 
+
 function setup() {
   createCanvas(400, 400);
 }
 
 function draw() {
-  background (255)
+  background (250)
   blendMode(DARKEST)
 
   line(0,93,200,93)
@@ -21,7 +22,7 @@ function draw() {
   line(93,400,93,200)
   
 
-  fill(255);
+  fill(250);
   let x = 3
   while (x >1 ) {
     let y = 3 ;
