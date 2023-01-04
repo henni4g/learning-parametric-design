@@ -1,43 +1,33 @@
-// noprotect
-c = 0;
+/*Code der per generative art und perlin noise ein Muster erzeugt, 
+das durch die eingabe von einem Datum TT/MM/YY farblich personalisiert wird.
+*/
+c = 0;//variable
 function setup() {
-  createCanvas(800, 800);
-  background(255);
-  noStroke();
-  rectMode(CENTER);
+  createCanvas(800, 800);//flächengröße
+  background(255);//hintergrund weiss
+  noStroke(); //keine outlines
+  rectMode(CENTER); //fixpunkt wird in die mitte gelegt anstatt obe links
 
-  var inputD;
-  var inputM;
-  var inputY;
-
-  pixelDensity(4);
-  rect_dims = [50, 400];
-  n_patches = 7;
+  pixelDensity(4); //schärfe
+  rect_dims = [50, 400]; //benennt die min/max Dimensionen (>50,<400
+  n_patches = 7;//variable
   rect_locations_top = [];
   rect_locations_bottom = [];
-  m = 20;
-  inputDay = createInput("1")
-  inputMonth = createInput("1")
-  inputYear = createInput("1")
-  button = createButton("BOOP!");
-  button.mouseClicked(draw);
+  m = 20;//variable
+  inputDay = createInput("1")//eingabefeld
+  inputMonth = createInput("1")//eingabefeld
+  inputYear = createInput("1")//eingabefeld
+  button = createButton("BOOP!");//knopf
+  button.mouseClicked(draw);//lädt die eingabe auf knopfdruck wegen den ladezeiten
  
 
-  var Day = inputDay.value()
-  var Month = inputMonth.value()
-  var Year = inputYear.value()
+  var Day = inputDay.value()//nimmt die eingegebene Zahl
+  var Month = inputMonth.value()//nimmt die eingegebene Zahl
+  var Year = inputYear.value()//nimmt die eingegebene Zahl
   
+
   
-  // colors = [[202,190,11],
-   //          [255,202,110],
-   //          [131,56,202],
-   //          [202,86,7]]
-  // colors2 = [[131,56,236],
-  //         [251,86,7],
-  //         [255,190,11],
-  //           [255,0,110]]
-  
-  colors = [
+  colors = [//farbpalette1
     [ 202 , 53, 138],
     [179, 202, 224],
     [207, 56, 149],
@@ -46,7 +36,7 @@ function setup() {
   ];
   
 
-  colors2 = [
+  colors2 = [//farbpalette2
     [242, 235, 138],
     [237, 138, 10],
     [237, 54, 26],
@@ -80,12 +70,9 @@ function setup() {
     ]);
   }
 }
-//function inputChange() {
-  // notice "this.value()" to access the current value
-  //TAG = parseInt(this.value());
 
 function draw(Day, Month, Year) {
-  background(255)
+  background(255)//hintergrund
   for (j = 0; j < 700; j++) {
     // draw_rect([255,0,110], [0,width/2], [0,height])
     // draw_rect([131,56,236], [width/2,width], [0,height])
@@ -109,18 +96,6 @@ function draw(Day, Month, Year) {
     }
   }
 
-  // // white paint line
-  // rect_dims2 = [10, 50]
-  // for (j=0; j<1000; j++) {
-  //   r = random()
-  //   if (r < 0.5) {
-  //     blendMode(HARD_LIGHT)
-  //   } else {
-  //     blendMode(BLEND)
-  //   }
-  //   fill(254,250,224,random(0,6))//"#98f5e1")
-  //   rect(random(width/2.2,width/2), random(0,height), random(rect_dims2[0],rect_dims2[1]), random(rect_dims2[0],rect_dims2[1]))
-  // }
 
   // noise on top
   w = 1;
@@ -156,7 +131,7 @@ function draw_rect(color, x, y, Day, Month, Year) {
   
 }
 
-function keyTyped() {
+function keyTyped() {//bild speichern bei s drücken
   if (key === "s") {
     save("myCanvas.jpg");
   }
